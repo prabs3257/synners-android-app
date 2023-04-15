@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment">
+    <fragment
+        android:id="@+id/loginFragment3"
+        android:name="com.example.memorybox.presentation.views.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment3_to_mapFragment3"
+            app:destination="@id/mapFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment3"
+        android:name="com.example.memorybox.presentation.views.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_mapFragment3_to_addMemoryFragment"
+            app:destination="@id/addMemoryFragment" />
+        <action
+            android:id="@+id/action_mapFragment3_to_descBottomSheetFragment"
+            app:destination="@id/descBottomSheetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMemoryFragment"
+        android:name="com.example.memorybox.presentation.views.AddMemoryFragment"
+        android:label="fragment_add_memory"
+        tools:layout="@layout/fragment_add_memory" >
+        <action
+            android:id="@+id/action_addMemoryFragment_to_mapFragment3"
+            app:destination="@id/mapFragment3" />
+    </fragment>
+    <dialog
+        android:id="@+id/descBottomSheetFragment"
+        android:name="com.example.memorybox.presentation.views.DescBottomSheetFragment"
+        android:label="fragment_desc_bottom_sheet"
+        tools:layout="@layout/fragment_desc_bottom_sheet" />
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.memorybox.presentation.views.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+</navigation>

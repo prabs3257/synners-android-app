@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.views.AddInfoActivity"
+    android:background="#F8F8F8">
+
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Create Team"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"></TextView>
+
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Competition Name"
+        android:layout_marginBottom="10dp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"></TextView>
+    <EditText
+        android:id="@+id/comp_name_et"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/round_back_edit_text"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="Enter the competition / project name"
+        android:textSize="14sp"
+        android:layout_marginBottom="10dp"></EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Competition Website"
+        android:layout_marginBottom="10dp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"></TextView>
+    <EditText
+        android:id="@+id/comp_web_et"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/round_back_edit_text"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="Enter the website link"
+        android:textSize="14sp"
+        android:layout_marginBottom="10dp"></EditText>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No. of members required "
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:layout_marginStart="20dp"></TextView>
+            <EditText
+                android:id="@+id/no_members_et"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:background="@drawable/round_back_edit_text"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="5dp"
+                android:hint="Enter team size(min-max)"
+                android:textSize="14sp"
+                android:layout_marginBottom="10dp"></EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Competition Date"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                ></TextView>
+            <EditText
+                android:id="@+id/comp_date_et"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:background="@drawable/round_back_edit_text"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="20dp"
+                android:hint="dd/mm/yy"
+                android:textSize="14sp"
+                android:layout_marginBottom="10dp"></EditText>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team members Name"
+        android:layout_marginBottom="10dp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"></TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/round_back_edit_text"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:id="@+id/name_members_et"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="Enter the name of team members"
+        android:textSize="14sp"
+        android:layout_marginBottom="10dp"></EditText>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Skills Required"
+        android:layout_marginBottom="10dp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"></TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/round_back_edit_text"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:id="@+id/skills_et"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="Mention skills required for the competition"
+        android:textSize="14sp"
+        android:layout_marginBottom="10dp"></EditText>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Project Idea"
+        android:layout_marginBottom="10dp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"></TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/round_back_edit_text"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:id="@+id/project_et"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="Describe the project idea"
+        android:textSize="14sp"
+        android:layout_marginBottom="10dp"></EditText>
+
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="SUBMIT"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/round_back_edit_text">
+
+    </Button>
+
+
+
+</LinearLayout>
