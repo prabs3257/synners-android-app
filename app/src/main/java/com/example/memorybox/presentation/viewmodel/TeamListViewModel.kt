@@ -39,8 +39,11 @@ class TeamListViewModel(private val repository: Repository) : ViewModel() {
 //        }
 //    }
 
+    val coroutineExceptionHandler = CoroutineExceptionHandler{_, throwable ->
+        throwable.printStackTrace()
+    }
     fun getTeamsByComp(id: String){
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
             repository.getTeamsByComp(id)
         }
     }

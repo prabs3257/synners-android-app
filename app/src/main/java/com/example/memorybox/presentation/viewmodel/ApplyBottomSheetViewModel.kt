@@ -26,9 +26,12 @@ class ApplyBottomSheetViewModel(private val repository: Repository) : ViewModel(
         return repository.getUser()
     }
 
+    val coroutineExceptionHandler = CoroutineExceptionHandler{_, throwable ->
+        throwable.printStackTrace()
+    }
     fun addRequest(teamId:String, name: String){
         Log.d("google login", "sdeweehihiihihi")
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
             repository.addRequest(teamId,name)
         }
     }

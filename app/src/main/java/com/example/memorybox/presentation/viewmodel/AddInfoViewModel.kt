@@ -24,6 +24,7 @@ class AddInfoViewModel (private val repository: Repository) : ViewModel()  {
     val coroutineExceptionHandler = CoroutineExceptionHandler{_, throwable ->
         throwable.printStackTrace()
     }
+
     fun addUserProfile(user: User){
         viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
             repository.addUserProfile(user)

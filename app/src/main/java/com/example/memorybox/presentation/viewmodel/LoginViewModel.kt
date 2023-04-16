@@ -22,7 +22,7 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
     private var competitionLiveData:MutableLiveData<List<Competition>> = repository.getCompetitionsLiveData()
 
     fun getCompetitions(){
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
             repository.getCompetitions()
         }
     }
@@ -40,7 +40,7 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
 
     fun getUserById(id:String){
         Log.d("google login", "sdeweehihiihihi")
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
             repository.getUserById(id)
         }
     }

@@ -1,5 +1,6 @@
 package com.example.memorybox.presentation.views
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -56,7 +57,7 @@ class DashboardFragment : Fragment() {
 
         dashboardFragmentViewModel.getTeamLiveData().observe(this.requireActivity(),{
             teams=it
-            Log.d("s", teams.toString())
+            Log.d("skk", teams.toString())
             adapter.submitList(teams)
 
         })
@@ -71,6 +72,16 @@ class DashboardFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_dashboard, container, false)
 
+        binding.reloadBtn.setOnClickListener {
+            dashboardFragmentViewModel.getTeamByUserId(dashboardFragmentViewModel.getUser()!!.uid)
+
+            dashboardFragmentViewModel.getTeamLiveData().observe(this.requireActivity(),{
+                teams=it
+                Log.d("skk", teams.toString())
+                adapter.submitList(teams)
+
+            })
+        }
 
 
         val recyclerView = binding.myCompetitionRecyclerView

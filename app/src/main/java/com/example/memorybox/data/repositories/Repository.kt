@@ -9,6 +9,7 @@ import com.example.memorybox.data.models.Memory
 import com.example.memorybox.data.models.Team
 import com.example.memorybox.data.models.User
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -201,7 +202,9 @@ class Repository (private val apiService: APIService){
 
     fun logout() {
         firebaseAuth = FirebaseAuth.getInstance()
+
         firebaseAuth.signOut()
+
         Log.d("google login", firebaseAuth.currentUser.toString())
 
     }

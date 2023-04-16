@@ -66,7 +66,7 @@ class MyTeamListAdapter: ListAdapter<Team, MyTeamListAdapter.MyTeamListViewHolde
     class DiffUtil : androidx.recyclerview.widget.DiffUtil.ItemCallback<Team>(){
         override fun areItemsTheSame(oldItem: Team, newItem: Team): Boolean {
             //change
-            return oldItem.competitionDate == newItem.competitionDate
+            return oldItem.requests == newItem.requests
         }
 
         override fun areContentsTheSame(oldItem: Team, newItem: Team): Boolean {
