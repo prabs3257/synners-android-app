@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -57,12 +58,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Find Your Job"
+            android:text="My Teams"
             android:textSize="18sp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginLeft="20dp">
         </TextView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/my_competition_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F8F8F8"/>
 
 
 
@@ -71,3 +78,4 @@
 
 
 </ScrollView>
+</layout>

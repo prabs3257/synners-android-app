@@ -1,5 +1,6 @@
 package com.example.memorybox.data.api
 
+import com.example.memorybox.data.models.Competition
 import com.example.memorybox.data.models.Memory
 import com.example.memorybox.data.models.Team
 import com.example.memorybox.data.models.User
@@ -28,11 +29,25 @@ interface APIService {
     @GET("getMemories")
     suspend fun getMemories(): Response<List<Memory>>
 
+    @GET("competitions")
+    suspend fun getCompetitions(): Response<List<Competition>>
+
     @GET("user/getUserById")
     suspend fun getUserById(@Query("googleId") id:String): Response<User>
 
+    @GET("competitions/teams")
+    suspend fun getTeamsByComp(@Query("_id") id:String): Response<List<Team>>
+
+    @GET("team/getTeams")
+    suspend fun getTeamsByUserId(@Query("googleId") id:String): Response<List<Team>>
+
     @GET("test")
     suspend fun testAPI()
+
+    @GET("team/addRequest")
+    suspend fun addRequest(@Query("teamId") teamId:String, @Query("name") name:String)
+
+
 
 
 }

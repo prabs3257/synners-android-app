@@ -1,6 +1,7 @@
 package com.example.memorybox.data.models
 
-data class Team(
+data class Team (
+    val team:String?,
     val competitionName:String?,
     val competitionWebsite:String?,
     val membersNum:String?,
@@ -10,4 +11,6 @@ data class Team(
     val projectIdea:String?,
     val objective:String?,
     val googleId:String?,
+    val _id:String,
+    val requests:List<String>,
 )

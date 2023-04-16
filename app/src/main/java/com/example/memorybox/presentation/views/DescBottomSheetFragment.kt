@@ -13,6 +13,7 @@ class DescBottomSheetFragment : BottomSheetDialogFragment() {
 
 
     private lateinit var binding: FragmentDescBottomSheetBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

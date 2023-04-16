@@ -4,6 +4,7 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.memorybox.data.api.APIService
+import com.example.memorybox.data.models.Competition
 import com.example.memorybox.data.models.Memory
 import com.example.memorybox.data.models.Team
 import com.example.memorybox.data.models.User
@@ -31,12 +32,23 @@ class Repository (private val apiService: APIService){
     private var imgIdLinkLiveData: MutableLiveData<String> = MutableLiveData()
     private var imgResumeLinkLiveData: MutableLiveData<String> = MutableLiveData()
     private var memoriesLiveData:MutableLiveData<List<Memory>> = MutableLiveData()
+    private var competitionLiveData:MutableLiveData<List<Competition>> = MutableLiveData()
 
+    private var teamsLiveData:MutableLiveData<List<Team>> = MutableLiveData()
 
     suspend fun getMemories(){
         val result = apiService.getMemories()
         if(result?.body()!= null){
             memoriesLiveData.postValue(result.body())
+        }
+
+    }
+
+    suspend fun getCompetitions(){
+        val result = apiService.getCompetitions()
+        if(result?.body()!= null){
+            Log.d("competition", result.body().toString())
+            competitionLiveData.postValue(result.body())
         }
 
     }
@@ -118,6 +130,13 @@ class Repository (private val apiService: APIService){
 
     }
 
+
+    suspend fun addRequest(teamId: String, name: String){
+
+        apiService.addRequest(teamId, name)
+
+    }
+
     suspend fun getUserById(id: String){
 
         Log.d("google login", "from repo")
@@ -125,6 +144,26 @@ class Repository (private val apiService: APIService){
         if(result?.body()!= null){
             Log.d("google login", result.body().toString())
             userMongoLiveData.postValue(result.body())
+        }
+
+    }
+
+    suspend fun getTeamsByComp(id: String){
+        Log.d("teamsssss","sfdfdfdfffffff")
+        val result = apiService.getTeamsByComp(id)
+        if(result?.body()!= null){
+            Log.d("google loginfromteam", result.body().toString())
+            teamsLiveData.postValue(result.body())
+        }
+
+    }
+
+    suspend fun getTeamsByUserId(googleId: String){
+        Log.d("teamsssss","sfdfdfdfffffff")
+        val result = apiService.getTeamsByUserId(googleId)
+        if(result?.body()!= null){
+            Log.d("google loginfromteam", result.body().toString())
+            teamsLiveData.postValue(result.body())
         }
 
     }
@@ -184,6 +223,14 @@ class Repository (private val apiService: APIService){
 
     fun getMemoriesLiveData() : MutableLiveData<List<Memory>>{
         return memoriesLiveData
+    }
+
+    fun getCompetitionsLiveData() : MutableLiveData<List<Competition>>{
+        return competitionLiveData
+    }
+
+    fun getTeamsLiveData() : MutableLiveData<List<Team>>{
+        return teamsLiveData
     }
     fun getUserMongoLiveData() : MutableLiveData<User>{
         return userMongoLiveData

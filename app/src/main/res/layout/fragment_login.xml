@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:layout_marginTop="0dp"
+    android:background="#F8F8F8">
 
-
-
-    <Button
-        android:layout_margin="20dp"
-        android:id="@+id/fragment_google_login_btn"
+    <ImageView
+        android:layout_marginTop="0dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Google Login" />
+        android:layout_height="220dp"
+        android:src="@drawable/comp_header">
 
-    <Button
-        android:layout_margin="20dp"
-        android:id="@+id/fragment_logout_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout" />
+    </ImageView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/competition_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F8F8F8"/>
 
 </LinearLayout>
 </layout>

@@ -1,11 +1,26 @@
 package com.example.memorybox.presentation.views
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.memorybox.R
+import com.example.memorybox.data.api.APIService
+import com.example.memorybox.data.api.RetrofitHelper
+import com.example.memorybox.data.models.Competition
+import com.example.memorybox.data.models.Team
+import com.example.memorybox.data.repositories.Repository
+import com.example.memorybox.databinding.FragmentDashboardBinding
+import com.example.memorybox.databinding.FragmentLoginBinding
+import com.example.memorybox.presentation.viewmodel.DashboardFragmentViewModel
+import com.example.memorybox.presentation.viewmodel.DashboardFragmentViewModelFactory
+import com.example.memorybox.presentation.viewmodel.LoginViewModel
+import com.example.memorybox.presentation.viewmodel.LoginViewModelFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,16 +33,34 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class DashboardFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
+
+    private lateinit var binding: FragmentDashboardBinding
+
+    private lateinit var dashboardFragmentViewModel: DashboardFragmentViewModel
+
+    private var teams:List<Team>? =null
+    val adapter = MyTeamListAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+        val apiService = RetrofitHelper.getInstance().create(APIService::class.java)
+        val repository = Repository(apiService)
+
+        dashboardFragmentViewModel = ViewModelProvider(this, DashboardFragmentViewModelFactory(repository)).get(
+            DashboardFragmentViewModel::class.java)
+
+
+
+        dashboardFragmentViewModel.getTeamByUserId(dashboardFragmentViewModel.getUser()!!.uid)
+
+        dashboardFragmentViewModel.getTeamLiveData().observe(this.requireActivity(),{
+            teams=it
+            Log.d("s", teams.toString())
+            adapter.submitList(teams)
+
+        })
+
     }
 
     override fun onCreateView(
@@ -35,26 +68,23 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false)
+
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_dashboard, container, false)
+
+
+
+        val recyclerView = binding.myCompetitionRecyclerView
+
+//
+
+
+        recyclerView.layoutManager = LinearLayoutManager(this.requireActivity())
+        recyclerView.setHasFixedSize(true)
+        recyclerView.adapter = adapter
+
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DashboardFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DashboardFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }

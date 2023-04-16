@@ -1,5 +1,6 @@
 package com.example.memorybox.presentation.views
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import com.google.android.material.snackbar.Snackbar
@@ -47,7 +48,14 @@ class AddTeamActivity : AppCompatActivity() {
                 , projectIdea = binding.projectEt.getText().toString()
                 , objective = ""
                 , googleId = addTeamViewModel.getUser()?.uid
-                , membersName = binding.nameMembersEt.getText().toString()))
+                , membersName = binding.nameMembersEt.getText().toString()
+                , team = binding.teamNameEt.getText().toString()
+                , _id = ""
+                , requests = emptyList()
+            ))
+
+            val myIntent = Intent(this, MainActivity::class.java)
+            startActivity(myIntent)
         }
 
 

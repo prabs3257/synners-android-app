@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.memorybox.data.models.Competition
 import com.example.memorybox.data.models.Memory
 import com.example.memorybox.data.models.User
 import com.example.memorybox.data.repositories.Repository
@@ -17,6 +18,18 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
 
     private var userLiveData:MutableLiveData<FirebaseUser> = repository.getUserLiveData()
     private var userMongoLiveData:MutableLiveData<User> = repository.getUserMongoLiveData()
+
+    private var competitionLiveData:MutableLiveData<List<Competition>> = repository.getCompetitionsLiveData()
+
+    fun getCompetitions(){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getCompetitions()
+        }
+    }
+
+    fun getCompetitionLiveData() : MutableLiveData<List<Competition>>{
+        return competitionLiveData
+    }
 
     fun googleLogin(account: GoogleSignInAccount?){
         repository.googleLogin(account)

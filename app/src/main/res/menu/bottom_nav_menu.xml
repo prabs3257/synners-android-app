@@ -3,20 +3,20 @@
 
     <item android:id="@+id/dashboardFragment"
         android:title="Home"
-        android:icon="@drawable/ic_android_black_24dp" />
+        android:icon="@drawable/baseline_home_24" />
 
     <item android:id="@+id/loginFragment3"
-        android:title="Search"
-        android:icon="@drawable/ic_android_black_24dp" />
+        android:title="Competitions"
+        android:icon="@drawable/baseline_book_24" />
 
     <item android:id="@+id/placeholder"
         android:title="" />
 
     <item android:id="@+id/miProfile"
         android:title="Profile"
-        android:icon="@drawable/ic_android_black_24dp" />
+        android:icon="@drawable/baseline_question_answer_24" />
 
     <item android:id="@+id/miSettings"
         android:title="Settings"
-        android:icon="@drawable/ic_android_black_24dp" />
+        android:icon="@drawable/baseline_person_24" />
 </menu>
